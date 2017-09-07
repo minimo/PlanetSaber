@@ -9,18 +9,7 @@ public class TitleController : MonoBehaviour {
 
     // Use this for initialization
 	void Start () {
-        Destroy(this.gameObject, 3);        
-		color = mat.GetColor("_Color");
-		mat = this.GetComponent<Material>();
-		iTween.ValueTo(gameObject, iTween.Hash(
-            "from", 1.0f,
-            "to", 0.0f,
-            "onupdatetarget", gameObject,
-            "onupdate", "updateFromValue",
-            "time", 0.8f,
-            "delay", 0.0f,
-            "easeType", "easeOutQuad"
-        ));
+        Destroy(this.gameObject, 3);
 	}
 	
 	// Update is called once per frame

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController: MonoBehaviour {
 
-    public GameObject Prefab;
+    public GameObject bullet;
     float intervalTime = 10.0f;
 
     // Use this for initialization
@@ -18,7 +18,7 @@ public class PlayerController: MonoBehaviour {
             intervalTime = 0.0f;
             Vector3 pos = new Vector3 (transform.position.x, transform.position.y, transform.position.z + 10.0f);
             Quaternion qua = new Quaternion ();
-            Instantiate(Prefab, pos, Quaternion.identity);
+            Instantiate(bullet, pos, Quaternion.identity);
         }
     }
 }
