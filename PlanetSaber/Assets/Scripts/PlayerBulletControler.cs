@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletControler : MonoBehaviour {
+public class PlayerBulletControler : MonoBehaviour {
 
     Vector3 progress;
     float speed = 2;
@@ -14,7 +14,7 @@ public class BulletControler : MonoBehaviour {
         progress = new Vector3(mat[0, 2] * speed, mat[1, 2] * speed, mat[2, 2] * speed);
 
         //５秒後に自分を削除する
-        Destroy(this.gameObject, 5);		
+        Destroy(this.gameObject, 3);
     }
 
     // Update is called once per frame
