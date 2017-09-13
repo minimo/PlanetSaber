@@ -1,0 +1,174 @@
+fileFormatVersion: 2
+guid: a4ba3762e8b68f14caeb64e54234b924
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Box001
+    100004: Box002
+    100006: Box003
+    100008: Box004
+    100010: Box005
+    100012: Group001
+    100014: Group002
+    100016: mothership
+    100018: Object002
+    100020: ship_01
+    100022: ship_02
+    100024: ship_03
+    100026: ship_04
+    100028: ship_05
+    100030: ship_06
+    100032: ship_07
+    100034: ship_08
+    100036: ship_09
+    100038: ship_10
+    100040: ship_11
+    100042: Sky001
+    400000: //RootNode
+    400002: Box001
+    400004: Box002
+    400006: Box003
+    400008: Box004
+    400010: Box005
+    400012: Group001
+    400014: Group002
+    400016: mothership
+    400018: Object002
+    400020: ship_01
+    400022: ship_02
+    400024: ship_03
+    400026: ship_04
+    400028: ship_05
+    400030: ship_06
+    400032: ship_07
+    400034: ship_08
+    400036: ship_09
+    400038: ship_10
+    400040: ship_11
+    400042: Sky001
+    2300000: //RootNode
+    2300002: Box001
+    2300004: Box002
+    2300006: Box003
+    2300008: Box004
+    2300010: Box005
+    2300012: mothership
+    2300014: ship_01
+    2300016: ship_02
+    2300018: ship_03
+    2300020: ship_04
+    2300022: ship_05
+    2300024: ship_06
+    2300026: ship_07
+    2300028: ship_08
+    2300030: ship_09
+    2300032: ship_10
+    2300034: ship_11
+    3300000: //RootNode
+    3300002: Box001
+    3300004: Box002
+    3300006: Box003
+    3300008: Box004
+    3300010: Box005
+    3300012: mothership
+    3300014: ship_01
+    3300016: ship_02
+    3300018: ship_03
+    3300020: ship_04
+    3300022: ship_05
+    3300024: ship_06
+    3300026: ship_07
+    3300028: ship_08
+    3300030: ship_09
+    3300032: ship_10
+    3300034: ship_11
+    4300000: ship_09
+    4300002: Box001
+    4300004: Box002
+    4300006: ship_08
+    4300008: ship_01
+    4300010: mothership
+    4300012: ship_05
+    4300014: ship_06
+    4300016: ship_07
+    4300018: ship_02
+    4300020: ship_03
+    4300022: ship_04
+    4300024: ship_10
+    4300026: ship_11
+    4300028: Box003
+    4300030: Box005
+    4300032: Box004
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 0.01
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 0
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
