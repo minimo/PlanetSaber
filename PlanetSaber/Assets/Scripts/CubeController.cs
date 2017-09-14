@@ -14,6 +14,13 @@ public class CubeController : MonoBehaviour {
 	void Update () {
 	}
 
+	void OnCollisionEnter(Collision collision) {
+        Instantiate(
+			explode,
+			new Vector3(transform.position.x, transform.position.y, transform.position.z),
+			Quaternion.identity);
+	}
+
     public void SetGazedAt(bool gazedAt) {
         GetComponent<Renderer>().material.color = gazedAt ? Color.green : Color.red;
     }
