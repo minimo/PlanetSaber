@@ -8,11 +8,6 @@ public class PlayerBulletConttroller : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Quaternion rot = Camera.main.transform.rotation;
-		Vector3 pos = Camera.main.transform.position;
-		pos.y += 2.0f;
-		this.transform.rotation = rot;
-		this.transform.position = pos;
 		Destroy(this.gameObject, 3);
 	}
 	

@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CubeController : MonoBehaviour {
-
+public class EnemyBasic : MonoBehaviour {
 	public GameObject player;
 	public VREyeContorller script;
 	public GameObject explode;
@@ -36,8 +35,4 @@ public class CubeController : MonoBehaviour {
 			new Vector3(transform.position.x, transform.position.y, transform.position.z),
 			Quaternion.identity);
 	}
-
-    public void SetGazedAt(bool gazedAt) {
-        GetComponent<Renderer>().material.color = gazedAt ? Color.green : Color.red;
-    }
 }

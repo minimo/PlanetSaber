@@ -8,12 +8,10 @@ public class Enemy1Controller : MonoBehaviour {
 
 	float speed = 0.7f;
 	float intervalTime;
-    bool turning;
 
 	// Use this for initialization
 	void Start () {
         this.intervalTime = 0.0f;
-        this.turning = false;
 	}
 	
 	// Update is called once per frame
