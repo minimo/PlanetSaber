@@ -3,38 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CubeController : MonoBehaviour {
-
-	public GameObject player;
-	public VREyeContorller script;
-	public GameObject explode;
-
 	// Use this for initialization
 	void Start () {
-		script = player.GetComponent<VREyeContorller>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	}
-
-	public void inSight(){
-		script.target = this.gameObject;
-	}
-
-	public void outSight(){
-		script.target = null;
-	}
-
-	void OnTriggerEnter(Collider other) {
-		this.damage();
-	}
-
-	public void damage() {
-		Destroy(this.gameObject);
-        Instantiate(
-			explode,
-			new Vector3(transform.position.x, transform.position.y, transform.position.z),
-			Quaternion.identity);
+		this.transform.Rotate(new Vector3(0, 0, 5));
+		this.transform.Translate(0, 0, -0.1f);
+		if (this.transform.position.z < -200.0f) {
+		}
 	}
 
     public void SetGazedAt(bool gazedAt) {
