@@ -16,13 +16,19 @@ public class Enemy1Controller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		this.transform.Rotate(new Vector3(0, 0, 5));
+		this.transform.Translate(0, 0, -0.1f);
+		if (this.transform.position.z > 200.0f) {
+			Destroy(this.gameObject);
+		}
+
         //プレイヤーからの距離
         float distance = this.transform.position.magnitude;
 
         //プレイヤーとの距離が一定以上
         if (distance > 100) {
-            this.transform.LookAt(Vector3.zero);
-            this.intervalTime += Time.deltaTime;
+//            this.transform.LookAt(Vector3.zero);
+//            this.intervalTime += Time.deltaTime;
 
             //一定間隔で弾を撃つ
             if (intervalTime >= 0.3f) {

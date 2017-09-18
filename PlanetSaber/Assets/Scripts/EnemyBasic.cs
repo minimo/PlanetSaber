@@ -9,6 +9,7 @@ public class EnemyBasic : MonoBehaviour {
 
 	//爆発オブジェクト
 	public GameObject explode;
+	public float explodeScale = 1.0f;
 
 	//爆発効果音
 	private AudioSource audioSource;
@@ -18,16 +19,12 @@ public class EnemyBasic : MonoBehaviour {
 	void Start () {
 		this.player = GameObject.FindWithTag("Player");
 		this.script = this.player.GetComponent<VREyeContorller>();
-		this.audioSource = this.gameObject.GetComponent<AudioSource>();
+//		this.audioSource = this.gameObject.GetComponent<AudioSource>();
+//		this.audioSource.clip = this.se_explode;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		this.transform.Translate(0, 0, -0.1f);
-
-		if (this.transform.position.z > 200.0f) {
-			Destroy(this.gameObject);
-		}
 	}
 
 	public void inSight(){
@@ -39,18 +36,20 @@ public class EnemyBasic : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider other) {
-		this.damage();
+		string name = other.gameObject.name;
+		if (name.Contains("PlayerBullet")) this.damage();
 	}
 
 	public void damage() {
 		//効果音再生
-		this.audioSource.PlayOneShot(this.se_explode);
+//		this.audioSource.Play();
 		Destroy(this.gameObject);
 
 		//爆発オブジェクト投入
-        Instantiate(
+		GameObject exp = Instantiate(
 			explode,
 			new Vector3(transform.position.x, transform.position.y, transform.position.z),
 			Quaternion.identity);
+		exp.transform.localScale.Set(this.explodeScale, this.explodeScale, this.explodeScale);
 	}
 }

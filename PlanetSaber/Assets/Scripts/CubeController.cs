@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CubeController : MonoBehaviour {
+
+	//敵弾
+	public GameObject bullet;
+
 	// Use this for initialization
 	void Start () {
 	}
@@ -11,7 +15,8 @@ public class CubeController : MonoBehaviour {
 	void Update () {
 		this.transform.Rotate(new Vector3(0, 0, 5));
 		this.transform.Translate(0, 0, -0.1f);
-		if (this.transform.position.z < -200.0f) {
+		if (this.transform.position.z > 200.0f) {
+			Destroy(this.gameObject);
 		}
 	}
 
