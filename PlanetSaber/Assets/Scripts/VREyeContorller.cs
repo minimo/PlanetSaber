@@ -48,4 +48,11 @@ public class VREyeContorller : MonoBehaviour {
 		} else {
 		}
 	}
+
+	void damage() {
+		iTween.ShakePosition(this.gameObject, iTween.Hash(
+			"y", 2,
+			"x", 2,
+			"time", 1.0f));
+	}
 }
