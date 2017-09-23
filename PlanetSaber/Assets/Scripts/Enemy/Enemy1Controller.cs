@@ -3,24 +3,24 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy1Controller : MonoBehaviour {
-	public GameObject EnemyBullet;
-	public GameObject explode;
+    public GameObject EnemyBullet;
+    public GameObject explode;
 
-	float speed = 0.7f;
-	float intervalTime;
+    float speed = 0.7f;
+    float intervalTime;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         this.intervalTime = 0.0f;
-	}
+    }
 	
 	// Update is called once per frame
-	void Update () {
-		this.transform.Rotate(new Vector3(0, 0, 5));
-		this.transform.Translate(0, 0, -0.1f);
-		if (this.transform.position.z > 200.0f) {
-			Destroy(this.gameObject);
-		}
+    void Update () {
+        this.transform.Rotate(new Vector3(0, 0, 5));
+        this.transform.Translate(0, 0, -0.1f);
+        if (this.transform.position.z > 200.0f) {
+            Destroy(this.gameObject);
+        }
 
         //プレイヤーからの距離
         float distance = this.transform.position.magnitude;
@@ -38,15 +38,15 @@ public class Enemy1Controller : MonoBehaviour {
             }
         }
         this.transform.Translate(0, 0, this.speed);
-	}
+    }
 
     public void OnGazeEnter() {
-		Destroy(this, 0);
+        Destroy(this, 0);
         Instantiate(
-			explode,
-			new Vector3(transform.position.x, transform.position.y, transform.position.z),
-			Quaternion.identity);
-    }
+            explode,
+            new Vector3(transform.position.x, transform.position.y, transform.position.z),
+            Quaternion.identity);
+        }
 
     public void OnGazeExit() {
     }
