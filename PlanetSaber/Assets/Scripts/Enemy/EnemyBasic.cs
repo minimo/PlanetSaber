@@ -25,7 +25,7 @@ public class EnemyBasic : MonoBehaviour {
     void Start () {
         this.player = GameObject.FindWithTag("Player");
         this.script = this.player.GetComponent<VREyeContorller>();
-      this.audioSource = this.gameObject.GetComponent<AudioSource>();
+        this.audioSource = this.gameObject.GetComponent<AudioSource>();
     }
 	
     // Update is called once per frame
@@ -59,7 +59,7 @@ public class EnemyBasic : MonoBehaviour {
 
     void dead() {
         //効果音再生
-//      this.audioSource.Play();
+//        this.audioSource.Play();
 
         if (this.isRemove) Destroy(this.gameObject);
         this.isDead = true;

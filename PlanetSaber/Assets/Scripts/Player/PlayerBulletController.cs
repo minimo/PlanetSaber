@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBulletController : MonoBehaviour {
     //弾速
-    float speed = 2;
+    float speed = 4;
 
     //着弾エフェクト
     public GameObject effectImpact;
@@ -12,7 +12,7 @@ public class PlayerBulletController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Destroy(this.gameObject, 3);
+        Destroy(this.gameObject, 4);
     }
     // Update is called once per frame
     void Update () {
@@ -25,5 +25,6 @@ public class PlayerBulletController : MonoBehaviour {
             new Vector3(transform.position.x, transform.position.y, transform.position.z),
             Quaternion.identity);
         exp.transform.localScale.Set(this.impactScale, this.impactScale, this.impactScale);
+        Destroy(this.gameObject);
     }
 }
