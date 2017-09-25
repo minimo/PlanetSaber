@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class VREyeContorller : MonoBehaviour {
 
+    public bool isMove = true;
+	public int tweenTime = 100;
+	public string PathName = "Path1";
+
 	public GameObject bullet;
 
 	public GameObject target;
@@ -14,6 +18,12 @@ public class VREyeContorller : MonoBehaviour {
 	void Start () {
 		this.target = null;
 		this.audioSource = this.gameObject.GetComponent<AudioSource>();
+
+		iTween.MoveTo(this.gameObject, iTween.Hash(
+			"path", iTweenPath.GetPath (PathName),
+			"time", tweenTime,
+			"easeType", iTween.EaseType.linear,
+			"orienttopath", false));
 	}
 	
 	// Update is called once per frame

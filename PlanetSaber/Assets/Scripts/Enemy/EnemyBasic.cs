@@ -66,12 +66,14 @@ public class EnemyBasic : MonoBehaviour {
 //        GetComponent<BoxCollider>().enabled = false;
 
         //爆発オブジェクト投入
-        for (int i = 0; i < this.explodeScale; i++) {
-            float x = transform.position.x + Random.Range(-100.0f, 100.0f);
-            float y = transform.position.y + Random.Range(-100.0f, 100.0f);
-            float z = transform.position.z + Random.Range(-100.0f, 100.0f);
-            GameObject exp = Instantiate(explode, new Vector3(x, y, z), Quaternion.identity);
-            exp.transform.localScale.Set(this.explodeScale, this.explodeScale, this.explodeScale);
+        Instantiate(explode, new Vector3(transform.position.x, transform.position.y, transform.position.z), Quaternion.identity);
+        if (this.explodeScale > 1) {
+            for (int i = 0; i < this.explodeScale; i++) {
+                float x = transform.position.x + Random.Range(-100.0f, 100.0f);
+                float y = transform.position.y + Random.Range(-100.0f, 100.0f);
+                float z = transform.position.z + Random.Range(-100.0f, 100.0f);
+                GameObject exp = Instantiate(explode, new Vector3(x, y, z), Quaternion.identity);
+            }
         }
     }
 }

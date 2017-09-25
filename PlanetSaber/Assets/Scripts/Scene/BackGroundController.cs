@@ -13,7 +13,7 @@ public class BackGroundController : MonoBehaviour {
 			"path", iTweenPath.GetPath (PathName),
 			"time", tweenTime,
 			"easeType", iTween.EaseType.linear,
-			"orienttopath", true));
+			"orienttopath", false));
 	}
 	
 	// Update is called once per frame
