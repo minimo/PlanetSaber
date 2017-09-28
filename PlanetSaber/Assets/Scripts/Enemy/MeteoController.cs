@@ -16,7 +16,7 @@ public class MeteoController : MonoBehaviour {
 	
     // Update is called once per frame
     void Update () {
-        this.transform.Translate(0, 0, -this.speed, null);
+//        this.transform.Translate(0, 0, -this.speed, null);
         this.transform.Rotate(this.rot);
     }
 }
