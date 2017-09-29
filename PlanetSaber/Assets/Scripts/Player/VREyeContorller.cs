@@ -23,7 +23,10 @@ public class VREyeContorller : MonoBehaviour {
 			"path", iTweenPath.GetPath (PathName),
 			"time", tweenTime,
 			"easeType", iTween.EaseType.linear,
-			"orienttopath", true));
+			"orienttopath", true,
+            "oncomplete", "onMoveComplete",
+            "oncompletetarget", this.gameObject
+        ));
 	}
 	
 	// Update is called once per frame
@@ -68,5 +71,8 @@ public class VREyeContorller : MonoBehaviour {
                 "x", 2,
                 "time", 1.0f)
         );
+    }
+
+    void onMoveComplete() {
     }
 }

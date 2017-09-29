@@ -73,6 +73,7 @@ public class EnemyBasic : MonoBehaviour {
                 float y = transform.position.y + Random.Range(-100.0f, 100.0f);
                 float z = transform.position.z + Random.Range(-100.0f, 100.0f);
                 GameObject exp = Instantiate(explode, new Vector3(x, y, z), Quaternion.identity);
+                exp.transform.localScale = new Vector3(explodeScale, explodeScale, explodeScale);
             }
         }
     }
