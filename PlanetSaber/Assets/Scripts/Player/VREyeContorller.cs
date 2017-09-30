@@ -13,6 +13,7 @@ public class VREyeContorller : MonoBehaviour {
 	public GameObject target;
 	public AudioClip se_shot;
 	private AudioSource audioSource;
+    readonly Quaternion _BASE_ROTATION = Quaternion.Euler(90, -45, 0);
 
 	// Use this for initialization
 	void Start () {
@@ -31,6 +32,13 @@ public class VREyeContorller : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if (!InitialSceneController.isTwinEye) {
+            // ジャイロの値を獲得する
+            Quaternion gyro = Input.gyro.attitude;
+            Camera.main.transform.localRotation = _BASE_ROTATION * (new Quaternion(-gyro.x, -gyro.y, gyro.z, gyro.w));
+         }
+
+        //ショット発射
 		if (Input.GetMouseButtonDown (0)) {
 			this.enterShot();
 		}
@@ -45,12 +53,12 @@ public class VREyeContorller : MonoBehaviour {
         Vector3 pos = this.transform.position;
         Quaternion rot = Camera.main.transform.rotation;
 
-        GameObject blt1 = Instantiate(bullet, Vector3.zero, Quaternion.identity, parent);
+        GameObject blt1 = Instantiate(bullet, Vector3.zero, Quaternion.identity);
         blt1.transform.position = pos;
         blt1.transform.rotation = rot;
         blt1.transform.Translate(1, 0, 0);
 
-        GameObject blt2 = Instantiate(bullet, Vector3.zero, Quaternion.identity, parent);
+        GameObject blt2 = Instantiate(bullet, Vector3.zero, Quaternion.identity);
         blt2.transform.position = pos;
         blt2.transform.rotation = rot;
         blt2.transform.Translate(-1, 0, 0);

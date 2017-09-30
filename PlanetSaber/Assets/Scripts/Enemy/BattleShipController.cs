@@ -28,6 +28,7 @@ public class BattleShipController : MonoBehaviour {
     void Update () {
         if (this.isDead) {
         }
+        this.time++;
     }
 
     void OnTriggerEnter(Collider other) {

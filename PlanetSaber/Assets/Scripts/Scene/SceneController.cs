@@ -21,8 +21,21 @@ public class SceneController : MonoBehaviour {
 
 	int time;
 
+    //シーンフェード用
+	[SerializeField]
+	GameObject fadeCanvas = null;
+    Fade fade = null;
+
 	// Use this for initialization
 	void Start () {
+        //シーンフェード初期処理
+        this.fade = this.fadeCanvas.GetComponent<Fade>();
+//        this.fade.FadeOut(1.0f);
+
+        //VR設定
+        StartCoroutine(this.SetVRDevice("Cardboard", InitialSceneController.isTwinEye));
+
+        //初期隕石ばら撒き
         for (int i = 0; i < 1000; i++) {
 			Vector3 pos = new Vector3(Random.Range(-300, 300), Random.Range(-300, 300), Random.Range(0, 2000));
             Instantiate(meteo_S, pos, Quaternion.identity, this.enemyGroup.transform);
@@ -45,14 +58,17 @@ public class SceneController : MonoBehaviour {
             Instantiate(enemy1, pos, Quaternion.identity, this.enemyGroup.transform);
 		}
 
-		//隕石投入
-		if (this.time % 90 == 0 && false) {
-			Vector3 pos = new Vector3(Random.Range(-300, 300), Random.Range(-300, 300), Random.Range(0, 3000));
-            Instantiate(meteo_S, pos, Quaternion.identity);
-			pos = new Vector3(Random.Range(-300, 300), Random.Range(-300, 300), Random.Range(0, 3000));
-            Instantiate(meteo_XXL, pos, Quaternion.identity);
-		}
-
 		this.time++;
 	}
+    private IEnumerator SetVRDevice(string device, bool isEnabled) {
+        // デバイス読み込み
+        UnityEngine.VR.VRSettings.LoadDeviceByName(device);
+ 
+        // 待機
+        yield return null; // new WaitForSeconds(0.1f);
+ 
+        // VRモードのオン/オフ設定
+        UnityEngine.VR.VRSettings.enabled = isEnabled;
+//        this.fade.FadeOut(3.0f);
+    }
 }
