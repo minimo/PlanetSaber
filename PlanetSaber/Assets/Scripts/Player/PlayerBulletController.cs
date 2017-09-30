@@ -24,7 +24,7 @@ public class PlayerBulletController : MonoBehaviour {
             effectImpact,
             new Vector3(transform.position.x, transform.position.y, transform.position.z),
             Quaternion.identity);
-        exp.transform.localScale.Set(this.impactScale, this.impactScale, this.impactScale);
+        exp.transform.localScale　= new Vector3(this.impactScale, this.impactScale, this.impactScale);
         Destroy(this.gameObject);
     }
 }
