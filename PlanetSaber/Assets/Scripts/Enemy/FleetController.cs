@@ -29,7 +29,10 @@ public class FleetController : MonoBehaviour {
     private IEnumerator Warp() {
 		foreach(Transform child in transform) {
             child.gameObject.GetComponent<BattleShipController>().isWarp = true;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.3f);
         }
+        yield return new WaitForSeconds(3.0f);
+        GameObject pl = GameObject.Find("VREye");
+        pl.GetComponent<VREyeContorller>().startWarpSequence();
     }
 }

@@ -15,12 +15,13 @@ public class VREyeContorller : MonoBehaviour {
 	private AudioSource audioSource;
     readonly Quaternion _BASE_ROTATION = Quaternion.Euler(90, -45, 0);
 
-    GameObject fleet = null;
+    [SerializeField]
+    GameObject wpEffect;
+    bool isWarp = true;
 
 	// Use this for initialization
 	void Start () {
         //敵艦隊の取得
-        this.fleet = GameObject.Find("EnemyFleet");
 
 		this.target = null;
 		this.audioSource = this.gameObject.GetComponent<AudioSource>();
@@ -47,6 +48,8 @@ public class VREyeContorller : MonoBehaviour {
 		if (Input.GetMouseButtonDown (0)) {
 			this.enterShot();
 		}
+
+        if (this.isWarp) transform.Translate(0.0f, 0.0f, 300.0f);
 	}
 
 	void enterShot() {
@@ -86,7 +89,14 @@ public class VREyeContorller : MonoBehaviour {
         );
     }
 
+    public void startWarpSequence() {
+        this.isWarp = true;
+        wpEffect.SetActive(true);
+    }
+
     void onMoveComplete() {
-        fleet.GetComponent<FleetController>().startWarpSequence();
+        //シーンコントローラにステージ終了を通知
+        GameObject sc = GameObject.Find("SceneController");
+        sc.GetComponent<SceneController>().endOfStage();
     }
 }

@@ -60,6 +60,13 @@ public class SceneController : MonoBehaviour {
 
 		this.time++;
 	}
+
+    //ステージ終了
+    public void endOfStage() {
+        GameObject fleet = GameObject.Find("EnemyFleet");
+        fleet.GetComponent<FleetController>().startWarpSequence();
+    }
+
     private IEnumerator SetVRDevice(string device, bool isEnabled) {
         // デバイス読み込み
         UnityEngine.VR.VRSettings.LoadDeviceByName(device);
