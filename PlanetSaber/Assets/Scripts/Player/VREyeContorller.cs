@@ -15,8 +15,13 @@ public class VREyeContorller : MonoBehaviour {
 	private AudioSource audioSource;
     readonly Quaternion _BASE_ROTATION = Quaternion.Euler(90, -45, 0);
 
+    GameObject fleet = null;
+
 	// Use this for initialization
 	void Start () {
+        //敵艦隊の取得
+        this.fleet = GameObject.Find("EnemyFleet");
+
 		this.target = null;
 		this.audioSource = this.gameObject.GetComponent<AudioSource>();
 
@@ -82,5 +87,6 @@ public class VREyeContorller : MonoBehaviour {
     }
 
     void onMoveComplete() {
+        fleet.GetComponent<FleetController>().startWarpSequence();
     }
 }
