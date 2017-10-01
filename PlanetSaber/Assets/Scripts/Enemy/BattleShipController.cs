@@ -18,6 +18,9 @@ public class BattleShipController : MonoBehaviour {
     //経過フレーム時間
     int time = 0;
 
+    //ワープフラグ
+    public　bool isWarp = false;
+
     // Use this for initialization
     void Start () {
         this.player = GameObject.FindWithTag("Player");
@@ -28,6 +31,8 @@ public class BattleShipController : MonoBehaviour {
     void Update () {
         if (this.isDead) {
         }
+        if (this.isWarp) transform.Translate(0.0f, 0.0f, 300.0f);
+
         this.time++;
     }
 

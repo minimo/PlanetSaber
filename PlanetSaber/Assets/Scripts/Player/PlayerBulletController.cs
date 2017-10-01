@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerBulletController : MonoBehaviour {
     //弾速
-    float speed = 4;
+    float speed = 5;
 
     //着弾エフェクト
     public GameObject effectImpact;
