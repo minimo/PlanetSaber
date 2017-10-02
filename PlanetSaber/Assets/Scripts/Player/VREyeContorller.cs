@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class VREyeContorller : MonoBehaviour {
 
-    public bool isMove = true;
+    //Tweenパラメータ
 	public int tweenTime = 100;
 	public string PathName = "Path1";
 
+    //プレイヤーショット
 	public GameObject bullet;
 
 	public GameObject target;
@@ -48,8 +49,6 @@ public class VREyeContorller : MonoBehaviour {
 		if (Input.GetMouseButtonDown (0)) {
 			this.enterShot();
 		}
-
-        if (this.isWarp) transform.Translate(0.0f, 0.0f, 300.0f);
 	}
 
 	void enterShot() {
@@ -90,7 +89,6 @@ public class VREyeContorller : MonoBehaviour {
     }
 
     public void startWarpSequence() {
-        this.isWarp = true;
         wpEffect.SetActive(true);
     }
 

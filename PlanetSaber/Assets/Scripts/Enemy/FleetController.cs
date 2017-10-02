@@ -5,34 +5,27 @@ using UnityEngine;
 //艦隊管理
 public class FleetController : MonoBehaviour {
 
-    Transform[] ships;
-
-    bool isWarp = false;
-
 	// Use this for initialization
 	void Start () {
     }
 
 	// Update is called once per frame
 	void Update () {
-        if (this.isWarp) {
-            this.isWarp = false;
-            StartCoroutine(this.Warp());
-//            transform.Translate(0.0f, 0.0f, 300.0f);
-        }
 	}
 
     public void startWarpSequence() {
-        this.isWarp = true;
+        StartCoroutine(this.Warp());
     }
 
     private IEnumerator Warp() {
-		foreach(Transform child in transform) {
-            child.gameObject.GetComponent<BattleShipController>().isWarp = true;
-            yield return new WaitForSeconds(0.3f);
-        }
-        yield return new WaitForSeconds(3.0f);
         GameObject pl = GameObject.Find("VREye");
         pl.GetComponent<VREyeContorller>().startWarpSequence();
+        yield return new WaitForSeconds(10.0f);
+
+		foreach(Transform child in transform) {
+//            child.gameObject.GetComponent<BattleShipController>().isWarp = true;
+            yield return new WaitForSeconds(10.0f);
+        }
+        yield return null; //new WaitForSeconds(1.0f);
     }
 }
