@@ -26,6 +26,11 @@ public class SceneController : MonoBehaviour {
 	GameObject fadeCanvas = null;
     Fade fade = null;
 
+    [SerializeField]
+    Material skyboxWarp;
+    [SerializeField]
+    Material skyboxEarth;
+
 	// Use this for initialization
 	void Start () {
         //シーンフェード初期処理
@@ -65,6 +70,14 @@ public class SceneController : MonoBehaviour {
     public void endOfStage() {
         GameObject fleet = GameObject.Find("EnemyFleet");
         fleet.GetComponent<FleetController>().startWarpSequence();
+    }
+
+    public void changeSkybox(bool isWarp) {
+        if (isWarp) {
+            Camera.main.GetComponent<Skybox>().material = skyboxWarp;
+        } else {
+            Camera.main.GetComponent<Skybox>().material = skyboxEarth;
+        }
     }
 
     private IEnumerator SetVRDevice(string device, bool isEnabled) {
