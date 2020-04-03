@@ -82,13 +82,13 @@ public class SceneController : MonoBehaviour {
 
     private IEnumerator SetVRDevice(string device, bool isEnabled) {
         // デバイス読み込み
-        UnityEngine.VR.VRSettings.LoadDeviceByName(device);
+        UnityEngine.XR.XRSettings.LoadDeviceByName(device);
  
         // 待機
         yield return null; // new WaitForSeconds(0.1f);
  
         // VRモードのオン/オフ設定
-        UnityEngine.VR.VRSettings.enabled = isEnabled;
+        UnityEngine.XR.XRSettings.enabled = isEnabled;
 //        this.fade.FadeOut(3.0f);
     }
 }

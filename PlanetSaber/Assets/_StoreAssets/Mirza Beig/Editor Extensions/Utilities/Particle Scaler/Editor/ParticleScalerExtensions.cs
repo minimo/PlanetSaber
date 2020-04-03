@@ -77,7 +77,7 @@ namespace MirzaBeig
                     // Shape.
 
                     shape.radius *= scale;
-                    shape.box *= scale;
+                    shape.scale *= scale;
                     shape.angle *= scale;
                     shape.randomDirectionAmount *= scale;
                     shape.sphericalDirectionAmount *= scale;
