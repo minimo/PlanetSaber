@@ -63,14 +63,6 @@ export class GameApp {
     const stars = new THREE.Points(starGeom, starMat);
     this.scene.add(stars);
 
-    // 巨大構造物（トンネルのようなリング）
-    for(let i=0; i<20; i++) {
-        const ringGeom = new THREE.TorusGeometry(20, 0.5, 16, 64);
-        const ringMat = new THREE.MeshBasicMaterial({ color: 0x00ffff, wireframe: true, transparent: true, opacity: 0.2 });
-        const ring = new THREE.Mesh(ringGeom, ringMat);
-        ring.position.z = -i * 10;
-        this.scene.add(ring);
-    }
   }
 
   private initGameObjects() {
@@ -186,9 +178,6 @@ export class GameApp {
         if (c.type === 'Points') {
           c.position.z += 10 * dt;
           if (c.position.z > 50) c.position.z -= 100;
-        } else if (c.type === 'Mesh' && (c as any).geometry && (c as any).geometry.type === 'TorusGeometry') {
-          c.position.z += 10 * dt;
-          if (c.position.z > 10) c.position.z -= 200;
         }
       });
     } else if (gameState.status === 'gameover' || gameState.status === 'clear') {
