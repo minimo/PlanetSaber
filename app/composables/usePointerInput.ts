@@ -17,9 +17,15 @@ export function usePointerInput(canvasRef: Ref<HTMLCanvasElement | null>) {
     eventBus.emit('input:pointer', { x: normalizedX.value, y: normalizedY.value });
   };
 
-  const onClick = (e: MouseEvent) => {
+  const onMouseDown = (e: MouseEvent) => {
     if (e.button === 0) {
-      eventBus.emit('input:fire', { x: normalizedX.value, y: normalizedY.value });
+      eventBus.emit('input:fire_start', { x: normalizedX.value, y: normalizedY.value });
+    }
+  };
+
+  const onMouseUp = (e: MouseEvent) => {
+    if (e.button === 0) {
+      eventBus.emit('input:fire_end');
     }
   };
 
@@ -38,7 +44,8 @@ export function usePointerInput(canvasRef: Ref<HTMLCanvasElement | null>) {
   onMounted(() => {
     if (canvasRef.value) {
       canvasRef.value.addEventListener('mousemove', onPointerMove);
-      canvasRef.value.addEventListener('click', onClick);
+      canvasRef.value.addEventListener('mousedown', onMouseDown);
+      canvasRef.value.addEventListener('mouseup', onMouseUp);
     }
     window.addEventListener('keydown', onKeyDown);
   });
@@ -46,7 +53,8 @@ export function usePointerInput(canvasRef: Ref<HTMLCanvasElement | null>) {
   onUnmounted(() => {
     if (canvasRef.value) {
       canvasRef.value.removeEventListener('mousemove', onPointerMove);
-      canvasRef.value.removeEventListener('click', onClick);
+      canvasRef.value.removeEventListener('mousedown', onMouseDown);
+      canvasRef.value.removeEventListener('mouseup', onMouseUp);
     }
     window.removeEventListener('keydown', onKeyDown);
   });

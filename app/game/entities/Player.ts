@@ -12,7 +12,10 @@ export class Player implements GameObject, Collider {
   private baseZ: number = 5;
 
   private lastFireTime: number = 0;
-  private fireInterval: number = 0.15; // sec
+  private fireInterval: number = 0.15; // sec (連射間隔)
+  private isFiring: boolean = false;
+  private lastInputX: number = 0; // マウスの最新正規化座標
+  private lastInputY: number = 0;
 
   constructor() {
     this.mesh = new THREE.Group();
@@ -20,7 +23,8 @@ export class Player implements GameObject, Collider {
 
     // 照準入力の購読
     eventBus.on('input:pointer', this.onPointer);
-    eventBus.on('input:fire', this.onFire);
+    eventBus.on('input:fire_start', this.onFireStart);
+    eventBus.on('input:fire_end', this.onFireEnd);
   }
 
   private buildMesh() {
@@ -28,20 +32,23 @@ export class Player implements GameObject, Collider {
   }
 
   private onPointer = ({ x, y }: { x: number; y: number }) => {
+    this.lastInputX = x;
+    this.lastInputY = y;
     // 正規化座標（-1 ~ 1）から移動範囲へ
-    // 少し遅れて追従するような実装にしても良いが、ここでは直接目標位置を変える
     this.targetX = x * 8; // 横の稼働範囲
     this.targetY = y * 5; // 縦の稼働範囲
   };
 
-  private onFire = (data?: {x: number, y: number}) => {
-    if (!data) return;
-    const now = performance.now() / 1000;
-    if (now - this.lastFireTime > this.fireInterval) {
-      this.lastFireTime = now;
-      eventBus.emit('action:player_fire_laser', data);
-    }
+  private onFireStart = ({ x, y }: { x: number; y: number }) => {
+    this.isFiring = true;
+    this.lastInputX = x;
+    this.lastInputY = y;
   };
+
+  private onFireEnd = () => {
+    this.isFiring = false;
+  };
+
 
   update(dt: number) {
     if (this.isDead) return;
@@ -53,11 +60,21 @@ export class Player implements GameObject, Collider {
     // 機体の傾き（バンク角）
     this.mesh.rotation.z = -(this.mesh.position.x - this.targetX) * 0.2;
     this.mesh.rotation.x = -(this.mesh.position.y - this.targetY) * 0.1;
+
+    // 連射処理
+    if (this.isFiring) {
+      const now = performance.now() / 1000;
+      if (now - this.lastFireTime > this.fireInterval) {
+        this.lastFireTime = now;
+        eventBus.emit('action:player_fire_laser', { x: this.lastInputX, y: this.lastInputY });
+      }
+    }
   }
 
   destroy() {
     eventBus.off('input:pointer', this.onPointer);
-    eventBus.off('input:fire', this.onFire);
+    eventBus.off('input:fire_start', this.onFireStart);
+    eventBus.off('input:fire_end', this.onFireEnd);
     
     // MaterialDisposeなどは本来ここで行う
     // ...
