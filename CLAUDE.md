@@ -89,3 +89,8 @@ useGameLoop() [requestAnimationFrame]
 | 3Dレンダリング | Three.js |
 | 言語 | TypeScript |
 | フォント | Google Fonts (Orbitron) |
+
+## その他
+- devサーバーはport3350を使用してください
+- コミットは勝手にせず、ユーザーの指示のみでコミットしてください
+
